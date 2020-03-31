@@ -1,4 +1,4 @@
-package org.jugistanbul;
+package org.jugistanbul.inputstream;
 
 import java.io.*;
 import java.net.URL;
