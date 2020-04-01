@@ -13,7 +13,8 @@ import java.util.concurrent.TimeUnit;
  * Created on 31.03.2020
  **/
 
-public class VersionSubscriber<T> implements Subscriber<T> {
+public class VersionSubscriber<T> implements Subscriber<T>
+{
 
     private Subscription subscription;
 
@@ -41,7 +42,8 @@ public class VersionSubscriber<T> implements Subscriber<T> {
     }
 }
 
-class VersionPublisher {
+class VersionPublisher
+{
 
     public static void main(String[] args) throws InterruptedException {
 

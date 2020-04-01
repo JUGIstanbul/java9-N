@@ -10,7 +10,8 @@ import java.util.Map;
  * Created on 31.03.2020
  **/
 
-public class Constants {
+public class Constants
+{
 
     public static Map<String, List<String>> versionsAndFutures = new HashMap<>();
 
