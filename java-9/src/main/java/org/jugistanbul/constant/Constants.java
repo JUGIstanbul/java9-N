@@ -12,10 +12,20 @@ import java.util.Map;
 
 public class Constants
 {
-
+    public static Map<String, String> turkishCharacters = new HashMap<>();
     public static Map<String, List<String>> versionsAndFutures = new HashMap<>();
 
     static {
+
+        turkishCharacters.put("ç", "c");
+        turkishCharacters.put("Ç", "c");
+        turkishCharacters.put("ğ", "g");
+        turkishCharacters.put("Ğ", "g");
+        turkishCharacters.put("ı", "i");
+        turkishCharacters.put("ş", "s");
+        turkishCharacters.put("Ş", "s");
+        turkishCharacters.put("ü", "u");
+        turkishCharacters.put("Ü", "u");
 
         versionsAndFutures.put("Java 9", Arrays.asList("Modularity", "JShell", "Stream Improvements"));
         versionsAndFutures.put("Java 10", Arrays.asList("Local Variable Type Inference",
