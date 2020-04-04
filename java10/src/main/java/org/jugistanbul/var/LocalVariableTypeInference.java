@@ -1,4 +1,4 @@
-package org.jugistanbul.localvti;
+package org.jugistanbul.var;
 
 import java.io.IOException;
 import java.nio.file.Files;
