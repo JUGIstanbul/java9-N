@@ -13,15 +13,14 @@ public class UnmodifiableView
 
     public static void main(String[] args){
 
-        //Before Java 10
         var cities = getListCities();
         var unmodifiableCities = Collections.unmodifiableList(cities);
         var citiesPopulation = getCitiesPopulationMap(cities);
-
-        cities.set(0, new City("Adana", fetchPopulation("Adana")));
         citiesPopulation.forEach((k, v) -> System.out.println(k + " : " + v));
-
         System.out.println("\n");
+
+        //This change will affect unmodifiableCities
+        cities.set(0, new City("Adana", fetchPopulation("Adana")));
 
         try {
             unmodifiableCities.forEach(c -> System.out.println(c.getName() + " : " + citiesPopulation.get(c.getName()).intValue()));
@@ -29,7 +28,10 @@ public class UnmodifiableView
             System.out.println("Thrown NullPointerException! \n");
         }
 
-        //With Java 10
+        //With java 10 for the unmodifiable view collections,
+        //three new methods came in the Collectors class
+        //nd one method in the List class.
+        //Collections returned by them methods are not affected by the change in the backing collection.
         cities = getListCities();
         unmodifiableCities = List.copyOf(cities);
         var newCitiesPopulation = getCitiesPopulationMap(cities);
@@ -38,26 +40,17 @@ public class UnmodifiableView
         unmodifiableCities.forEach(c ->
             System.out.println(c.getName() + " : " + newCitiesPopulation.get(c.getName()).intValue()));
 
-
         System.out.println("\n");
 
-        //To Unmodifiable List
-        var numberList = Arrays.asList(1, 2, 3, 4)
-                .stream().collect(Collectors.toUnmodifiableList());
-        var lastCitiesPopulationMap = getCitiesPopulationMap(cities);
-
-        try {
-            numberList.add(5);
-            lastCitiesPopulationMap.put("Erzurum", 767_484);
-        } catch (UnsupportedOperationException ue){
-            System.out.println("Thrown UnsupportedOperationException!");
-        }
-
+        var numberList = Arrays.asList(1, 2, 3, 4);
+        var numberListView = numberList.stream().collect(Collectors.toUnmodifiableList());
+        numberList.set(0, 9);
+        numberListView.forEach(System.out::println);
     }
 
-    private static ArrayList<City> getListCities(){
-        return new ArrayList<>(List.of(new City("İstanbul", fetchPopulation("İstanbul")),
-                new City("İzmir", fetchPopulation("İzmir")), new City("Ankara", fetchPopulation("Ankara"))));
+    private static List<City> getListCities(){
+        return Arrays.asList(new City("İstanbul", fetchPopulation("İstanbul")),
+                new City("İzmir", fetchPopulation("İzmir")), new City("Ankara", fetchPopulation("Ankara")));
     }
 
     private static Map<String, Integer> getCitiesPopulationMap(final List<City> cities){
