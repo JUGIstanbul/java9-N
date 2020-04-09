@@ -3,10 +3,8 @@ package org.jugistanbul.var;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
@@ -23,10 +21,6 @@ public class LocalVariableTypeInference
         }
 
         System.out.println("\n");
-
-        var meetupSeries = Map
-                .of("Java 9 Module API", LocalDateTime.of(2020, 4, 2, 19, 0, 0),
-                        "What's New in Java 10", LocalDateTime.of(2020, 4, 9, 19,0,0));
 
         var personList = new ArrayList<>();
         personList.add(new Person("Hüseyin", "Akdoğan"));
