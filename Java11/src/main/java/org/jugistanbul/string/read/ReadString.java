@@ -1,7 +1,6 @@
-package org.jugistanbul.readstring;
+package org.jugistanbul.string.read;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
