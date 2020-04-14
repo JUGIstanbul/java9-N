@@ -16,9 +16,9 @@ public class NewUtilityMethods
         final var nameList = names.strip().lines().collect(Collectors.toList());
         nameList.forEach(System.out::println);
 
-        System.out.println();
+        System.out.println("\u2000");
 
-        final var jugPart1 = "JUG ";
+        final var jugPart1 = "JUG\u2000";
         final var jugPart2 = " İstanbul";
 
         System.out.println(jugPart1.stripTrailing() + jugPart2.stripLeading());
