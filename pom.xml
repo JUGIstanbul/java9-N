@@ -13,6 +13,7 @@
         <module>java-9</module>
         <module>java10</module>
         <module>Java11</module>
+        <module>Java12</module>
     </modules>
 
 
