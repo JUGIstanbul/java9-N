@@ -2,9 +2,9 @@ package org.jugistanbul.singleclass;
 
 public class SingleClass {
 
-    private static class InnerClass {
+    private static class StaticNestedClass {
         public void say() {
-            System.out.println("Hi, I'm Inner Class!!!");
+            System.out.println("Hi, I'm Staitc Nested Class!!!");
         }
     }
 
@@ -13,9 +13,9 @@ public class SingleClass {
     }
 
     public static void main(String[] args) {
-        var inner = new InnerClass();
+        var nested = new StaticNestedClass();
         var main = new SingleClass();
         main.say();
-        inner.say();
+        nested.say();
     }
 }

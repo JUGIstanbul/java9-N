@@ -25,7 +25,11 @@ public class VarLambdaParameters
                 ?"This apple weighs at least 50 grams"
                 :"This apple is lighter than 50 grams";
 
-        System.out.println(message);
+
+        // RESTRICTIONS
+        // (var s1, s2) -> s1 + s2      //no skipping allowed
+        // (var s1, String y) -> s1 + y //no mixing allowed
+        // var s1 -> s1                 //not allowed. Need parentheses if you use var in lambda.
     }
 }
 

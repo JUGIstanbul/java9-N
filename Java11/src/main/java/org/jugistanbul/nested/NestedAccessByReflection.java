@@ -7,33 +7,57 @@ import java.lang.reflect.Method;
  * @author hakdogan (hakdogan@kodcu.com)
  * Created on 14.04.2020
  **/
+public class NestedAccessByReflection {
 
-public class NestedAccessByReflection
-{
-    public static void main(String[] args) throws NoSuchMethodException,
-            InvocationTargetException, IllegalAccessException {
-
-        var nestedAccess = new NestedAccessByReflection();
-        nestedAccess.callMethodOfNestedObject();
-    }
-
-    public void callMethodOfNestedObject() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        var object = new NestedObject();
-        object.nestedPublic();
+    public void myPublic() {
+        System.out.println("ParentClass->myPublic()");
     }
 
     private void myPrivate() {
-        System.out.println("myPrivate");
+        System.out.println("ParentClass->myPrivate()");
     }
 
-    class NestedObject {
+    public Nested getNested() {
+        return new Nested();
+    }
 
-        public void nestedPublic() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-            //myPrivate(); this is possible
+    public class Nested {
 
-            var access = new NestedAccessByReflection();
-            Method method = access.getClass().getNestHost().getDeclaredMethod("myPrivate");
-            method.invoke(access); //but this isn't possible before java 11
+        public void callNested() {
+            // myPrivate();
+
+//            { // not works
+//                try {
+//                    Method privateMethod = NestedAccessByReflection.class
+//                                                                    .getDeclaredMethod("myPrivate");
+//                    privateMethod.invoke(privateMethod);
+//                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+
+            { // works
+                try {
+                    Method publicMethod = Nested.class
+                                                .getNestHost()
+                                                .getDeclaredMethod("myPublic");
+                    publicMethod.invoke(NestedAccessByReflection.this);
+
+                    Method privateMethod = Nested.class
+                                                .getNestHost()
+                                                .getDeclaredMethod("myPrivate");
+                    privateMethod.invoke(NestedAccessByReflection.this);
+
+                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+    }
+
+    public static void main(String[] args) {
+        var main = new NestedAccessByReflection();
+        var nested = main.getNested();
+        nested.callNested();
     }
 }

@@ -11,6 +11,10 @@
 
     <artifactId>Java11</artifactId>
 
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -18,11 +22,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
