@@ -1,14 +1,12 @@
 package org.jugistanbul.httpclient;
 
-import java.io.IOException;
 import java.net.*;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.time.Duration;
 
-public class HttpClientOtherOptions {
-    private static void sendPost() throws IOException, InterruptedException {
+public class HttpClientOtherOptions
+{
+    private static void sendPost() {
 
         // Authanticator
         HttpClient httpClient1 = HttpClient.newBuilder()
@@ -33,7 +31,7 @@ public class HttpClientOtherOptions {
 
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args)  {
         sendPost();
     }
 }

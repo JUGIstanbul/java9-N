@@ -7,7 +7,8 @@ import java.lang.reflect.Method;
  * @author hakdogan (hakdogan@kodcu.com)
  * Created on 14.04.2020
  **/
-public class NestedAccessByReflection {
+public class NestedAccessByReflection
+{
 
     public void myPublic() {
         System.out.println("ParentClass->myPublic()");

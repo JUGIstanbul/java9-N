@@ -7,7 +7,8 @@ import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class HttpClientGET {
+public class HttpClientGET
+{
     private static void sendGET() throws IOException, InterruptedException {
 
         HttpClient httpClient = HttpClient.newBuilder()

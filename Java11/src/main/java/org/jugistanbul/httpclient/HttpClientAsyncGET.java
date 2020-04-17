@@ -1,9 +1,7 @@
 package org.jugistanbul.httpclient;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
@@ -12,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class HttpClientAsyncGET {
-    private static void sendGET() throws IOException, InterruptedException, TimeoutException, ExecutionException {
+    private static void sendGET() throws InterruptedException, TimeoutException, ExecutionException {
 
         HttpClient httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
@@ -32,7 +30,7 @@ public class HttpClientAsyncGET {
         System.out.println(responseBody);
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException, TimeoutException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, TimeoutException, ExecutionException {
         sendGET();
     }
 }
