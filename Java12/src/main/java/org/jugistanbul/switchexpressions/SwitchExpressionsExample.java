@@ -33,7 +33,10 @@ public class SwitchExpressionsExample
         return switch (day) {
             case 1, 2, 3, 4, 5 -> DayType.WEEKDAY;
             case 6, 7 -> DayType.WEEKEND;
-            default -> DayType.UNKNOWN;
+            default -> {
+                System.out.println("Unknown value");
+                yield DayType.UNKNOWN;
+            }
         };
     }
 }
