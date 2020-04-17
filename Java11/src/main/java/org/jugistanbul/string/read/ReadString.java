@@ -11,11 +11,8 @@ import java.nio.file.Paths;
 
 public class ReadString
 {
-    private static final String FILE_PATH = "java11/src/main/resources/meetups.txt";
-
-    public static void main(String[] args) throws IOException {
-        final var content = Files.readString(Paths.get(FILE_PATH));
-        System.out.println(content);
+    public static String readString(final String path) throws IOException {
+        return Files.readString(Paths.get(path));
     }
 
 }
