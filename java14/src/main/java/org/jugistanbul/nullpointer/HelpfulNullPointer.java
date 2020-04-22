@@ -14,5 +14,7 @@ public class HelpfulNullPointer
 
         System.out.println(car.getModel().getFactory().getName());
 
+        //You must use the -XX:+ShowCodeDetailsInExceptionMessages command-line option
+        // to enable detailed exception message feature because it's disabled by default.
     }
 }
